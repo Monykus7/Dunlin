@@ -9,6 +9,7 @@ use serde::{Serialize};
 const CURRENT_DB_VERSION: u32 = 1;
 
 pub fn initialize_database(app_handle: &AppHandle) -> Result<Connection, rusqlite::Error> {
+    //This public function sucks my balls and allows me to initialize the app. Threaded balls is super epic
     let app_dir = app_handle.path_resolver().app_data_dir().expect("The app data directory should exist.");
     fs::create_dir_all(&app_dir).expect("The app data directory should be created.");
     let sqlite_path = app_dir.join("data.db");
